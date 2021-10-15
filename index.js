@@ -5,7 +5,6 @@ const fs = require("fs");
 var express=require("express")
 var bodyParser = require("body-parser")
 const port = process.env.PORT || 3000;
-const hostname = '127.0.0.1';
 const app = express();
 
 let imdbData = []
@@ -54,19 +53,20 @@ let currentrating =$('#pageContent>div:nth-child(3)>div.userbox>div.info>ul>li:n
 //let solvedproblem=$('#pageContent > div:nth-child(7)> div > div:nth-child(7)>div:nth-child(1)>div:nth-child(1)>div:nth-child(1)').text()                                                                                                                                     erActivityFrame_frame > div > div._UserActivityFrame_footer>div:nth-child(1)>div:nth-child(1)>div:nth-child(1)').text()
 let contribution=$('#pageContent>div:nth-child(3)>div.userbox>div.info>ul>li:nth-child(2)>\n').text()
 let lastactivity=$('#pageContent>div:nth-child(3)>div.userbox>div.info>ul>li:nth-child(4)>\n').text()
+let register=$('#pageContent>div:nth-child(3)>div.userbox>div.info>ul>li:nth-child(5)>\n').text();
 //pushed element into the array 
 v1=title;
 v2=currentrating;
-//v5=solvedproblem;
 v3=contribution;
 v4=lastactivity;
+v5=register;
 //console.log(v1,v2,v3,v4);
 imdbData.push({
     title,
     currentrating,
-   // solvedproblem,
     contribution,
-    lastactivity
+    lastactivity,
+    register,
 
 });
 
@@ -83,30 +83,30 @@ catch(error) {
 }
 }
 
-function func(res) {
-    res.write('<html>');
-    res.write('<body>');
-    res.write(`<h1 style="color:grey;text-align:center;font-family:'Times New Roman', Times, serif;">${v1}</h1>`);
-    res.write(`<h1 style="color:grey;text-align:center">${v2}</h1>`);
-    res.write(`<h1 style="color:grey;text-align:center">${v3}</h1>`);
-    res.write(`<h1 style="color:grey;text-align:center">${v4}</h1>`);
-    res.write(`<h1  style="color:grey;text-align:center"><a href="http://${hostname}:${port}">Search for Other user!</a></h1>`)
-    res.write('</body>');
-
-    res.write('</html>');
-    res.end();
- } 
+// function func(res) {
+//     res.write('<html>');
+//     res.write('<body>');
+//     res.write(`<h1 style="color:grey;text-align:center;font-family:'Times New Roman', Times, serif;">${v1}</h1>`);
+//     res.write(`<h1 style="color:grey;text-align:center">${v2}</h1>`);
+//     res.write(`<h1 style="color:grey;text-align:center">${v3}</h1>`);
+//     res.write(`<h1 style="color:grey;text-align:center">${v4}</h1>`);
+//     res.write(`<h1  style="color:grey;text-align:center"><a href="http://${hostname}:${port}">Search for Other user!</a></h1>`)
+//     res.write('</body>');
+//     res.write('</html>');
+//     res.end();
+//  } 
 
 app.post("/sign_up",(req,res)=>{
     movie=req.body.link;
-    console.log(req.body.link);
+  //  console.log(req.body.link);
     f().then(
         //()=>func(res)
         res.render('index',{
            place1:v1,
            place2:v2,
            place3:v3,
-           place4:v4
+           place4:v4,
+           place5:v5,
         })
     )
     })
