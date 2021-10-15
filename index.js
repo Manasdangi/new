@@ -113,7 +113,7 @@ app.post("/sign_up",(req,res)=>{
 
 
 
-app.listen(port,hostname,()=>{
-    console.log(`server running at http://${hostname}:${port}/`)
+app.listen(port,()=>{
+  console.log('listening on port');
 });
 
