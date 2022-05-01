@@ -1,7 +1,6 @@
 //requiring modules
 const request = require("request-promise");
 const cheerio = require("cheerio");
-const fs = require("fs");
 var express=require("express")
 var bodyParser = require("body-parser")
 const port = process.env.PORT || 3000;
@@ -11,9 +10,7 @@ let imdbData = []
 let v1,v2,v3,v4,v5;
 var movie;//storing url in "movie" 
 
- app.use(bodyParser.json())
- //app.use(express.static('public'))
- 
+ app.use(bodyParser.json()) 
  app.use(bodyParser.urlencoded({
      extended:true
  }))
@@ -70,7 +67,6 @@ imdbData.push({
 
 });
 
-//showed in console log of browser
 console.log(imdbData);
 
 
@@ -85,7 +81,7 @@ app.post("/sign_up",(req,res)=>{
     movie=req.body.link;
   //  console.log(req.body.link);
     f().then(
-        //()=>func(res)
+        
         res.render('index',{
            place1:v1,
            place2:v2,
@@ -94,6 +90,8 @@ app.post("/sign_up",(req,res)=>{
            place5:v5,
         })
     )
+    res.end()
+
     })
 
 
