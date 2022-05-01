@@ -73,28 +73,13 @@ imdbData.push({
 //showed in console log of browser
 console.log(imdbData);
 
-//console.log(it);
-//const j2cp=new json2csv();//changed 
-//const csv=j2cp.parse(imdbData)
-//fs.writeFileSync("./imdb.csv",csv,"utf-8");//help to create file
+
 }
 catch(error) {
     console.error(error);
 }
 }
 
-// function func(res) {
-//     res.write('<html>');
-//     res.write('<body>');
-//     res.write(`<h1 style="color:grey;text-align:center;font-family:'Times New Roman', Times, serif;">${v1}</h1>`);
-//     res.write(`<h1 style="color:grey;text-align:center">${v2}</h1>`);
-//     res.write(`<h1 style="color:grey;text-align:center">${v3}</h1>`);
-//     res.write(`<h1 style="color:grey;text-align:center">${v4}</h1>`);
-//     res.write(`<h1  style="color:grey;text-align:center"><a href="http://${hostname}:${port}">Search for Other user!</a></h1>`)
-//     res.write('</body>');
-//     res.write('</html>');
-//     res.end();
-//  } 
 
 app.post("/sign_up",(req,res)=>{
     movie=req.body.link;
